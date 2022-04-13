@@ -9,9 +9,9 @@
 - Mock Payment System
   
 ### Technologies Used
-- Bootstrap project with CRA
+- Bootstrap project with CRA ✅
 - Typescript for type system ✅
-- Tailwind as a CSS framework
+- Tailwind as a CSS framework ✅
 - Redux as a global state manager (briefly)
 - Firebase & it's tools as a backend source
 - Netlify as a deployment platform
