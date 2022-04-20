@@ -12,9 +12,10 @@
 - Bootstrap project with CRA ✅
 - Typescript for type system ✅
 - Tailwind as a CSS framework ✅
-- Redux as a global state manager (briefly)
-- Firebase & it's tools as a backend source
-- Netlify as a deployment platform
+- Redux as a global state manager (briefly) ✅ 
+- Firebase & it's tools as a backend source ✅ 
+- Netlify as a deployment platform ✅ 
+- Git & Github as source control ✅
 - And more...
 
 ### How is things going to work
@@ -26,9 +27,9 @@
 ---
 
 __Day 1__
-- Project Overview 
-- Tools Intro 
-- Project setup with required tools 
-- Remote repo setup 
-- Firebase setup 
-- Basic components 
+- Project Overview ✅ 
+- Tools Intro ✅ 
+- Project setup with required tools ✅ 
+- Remote repo setup ✅ 
+- Firebase setup ✅ 
+- Basic components ✅ 

@@ -1,8 +1,10 @@
+import Homepage from './pages/Homepage';
+
 function App() {
   return (
     <div>
       <h1 className='text-3xl font-bold underline text-blue-500'>
-        Airbnb Clone
+        <Homepage />
       </h1>
     </div>
   );
