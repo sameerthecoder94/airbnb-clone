@@ -33,3 +33,8 @@ __Day 1__
 - Remote repo setup ✅ 
 - Firebase setup ✅ 
 - Basic components ✅ 
+
+__Day 2__
+- Building Static Components with tailwind
+- Connecting react to firestore
+- Fetching data from firestore
