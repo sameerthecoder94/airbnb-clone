@@ -1,21 +1,29 @@
-import { Fragment, useState } from 'react';
+import { Fragment, useEffect, useState } from 'react';
 import { Combobox, Transition } from '@headlessui/react';
 import { CheckIcon, SelectorIcon } from '@heroicons/react/solid';
+import { firestoreDB } from '../firebase';
+import { collection, getDocs } from 'firebase/firestore';
 
-const locations = [
-  { id: 1, name: 'Paris' },
-  { id: 2, name: 'New York' },
-  { id: 3, name: 'London' },
-  { id: 4, name: 'Bangkok' },
-  { id: 5, name: 'Dubai' },
-  { id: 6, name: 'Hong kong' },
-];
+interface Location {
+  id: number;
+  name: string;
+}
 
 const Search = () => {
   const [selected, setSelected] = useState({
+    id: 0,
     name: 'Select Location',
   });
   const [query, setQuery] = useState('');
+  const [locations, setLocations] = useState<Location[]>([]);
+
+  useEffect(() => {
+    const locationsRef = collection(firestoreDB, 'locations');
+    getDocs(locationsRef).then((data) => {
+      const locationsData = data.docs.map((doc) => doc.data());
+      setLocations(locationsData as any);
+    });
+  }, []);
 
   const filteredLocations =
     query === ''
