@@ -31,6 +31,7 @@ const Popular: FC = () => {
                 name={hotel.name}
                 price={hotel.price}
                 rating={hotel.rating}
+                description={hotel.description}
               />
             );
           })}
