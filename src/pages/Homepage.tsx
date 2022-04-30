@@ -1,13 +1,12 @@
+import { FC } from 'react';
 import FeaturedLocations from '../components/FeaturedLocations';
 import Footer from '../components/Footer';
-import Header from '../components/Header';
 import Hero from '../components/Hero';
 import Popular from '../components/Popular';
 
-const Homepage = () => {
+const HomePage: FC = () => {
   return (
     <div>
-      <Header />
       <Hero />
       <FeaturedLocations />
       <Popular />
@@ -16,4 +15,4 @@ const Homepage = () => {
   );
 };
 
-export default Homepage;
+export default HomePage;

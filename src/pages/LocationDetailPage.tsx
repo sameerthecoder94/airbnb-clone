@@ -1,15 +1,14 @@
-import { FC, useEffect, useState } from 'react';
-import Header from '../components/Header';
-import { Hotel } from '../types';
 import { firestoreDB } from '../firebase';
 import { collection, getDocs, query, where } from 'firebase/firestore';
 import { useParams } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { Hotel } from '../types';
 
 type LocationDetailPageParams = {
   hotelId: string;
 };
 
-const LocationDetailPage: FC = () => {
+const LocationDetailPage: React.FC = () => {
   const { hotelId } = useParams<LocationDetailPageParams>();
   const [hotel, setHotel] = useState<Hotel>();
   const [fetching, setFetching] = useState(false);
@@ -31,7 +30,6 @@ const LocationDetailPage: FC = () => {
 
   return (
     <div>
-      <Header />
       <img
         src={hotel?.image}
         alt='detail'
