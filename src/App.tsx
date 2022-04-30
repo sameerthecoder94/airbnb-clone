@@ -4,6 +4,7 @@ import LocationDetailPage from './pages/LocationDetailPage';
 import Header from './components/Header';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
+import HotelsPage from './pages/HotelsPage';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           path='/hotel-detail/:hotelId'
           element={<LocationDetailPage />}
         />
+        <Route path='/hotels' element={<HotelsPage />} />
         <Route path='/login' element={<LoginPage />} />
         <Route path='/register' element={<RegisterPage />} />
       </Routes>

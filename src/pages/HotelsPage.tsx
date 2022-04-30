@@ -1,0 +1,53 @@
+import { FC, useEffect, useState } from 'react';
+import LocationCard from '../components/LocationCard';
+import { firestoreDB } from '../firebase';
+import { collection, getDocs, query, where } from 'firebase/firestore';
+import { useSearchParams } from 'react-router-dom';
+import { Hotel } from '../types';
+
+const HotelsPage: FC = () => {
+  const [params] = useSearchParams();
+  const [hotels, setHotels] = useState<Hotel[]>([]);
+
+  useEffect(() => {
+    const hotelsRef = collection(firestoreDB, 'hotels');
+    const q = query(
+      hotelsRef,
+      where('location', '==', params.get('city'))
+    );
+    getDocs(q).then((data) => {
+      const hotelsData = data.docs.map((doc) => doc.data());
+      setHotels(hotelsData as any);
+    });
+  }, [params]);
+
+  if (hotels.length < 1) {
+    return <h4 className='font-bold text-2xl mb-4'>No Hotels Found!!</h4>;
+  }
+
+  return (
+    <div>
+      <div className='p-4'>
+        <h4 className='font-bold text-2xl mb-4'>All Hotels</h4>
+        <div className='flex'>
+          {hotels.map((hotel) => {
+            return (
+              <LocationCard
+                key={hotel.id}
+                id={hotel.id}
+                image={hotel.image}
+                location={hotel.location}
+                name={hotel.name}
+                price={hotel.price}
+                rating={hotel.rating}
+                description={hotel.description}
+              />
+            );
+          })}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default HotelsPage;

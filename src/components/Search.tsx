@@ -1,21 +1,22 @@
-import { Fragment, useEffect, useState } from 'react';
+import { Fragment, useState, useEffect, FC } from 'react';
 import { Combobox, Transition } from '@headlessui/react';
 import { CheckIcon, SelectorIcon } from '@heroicons/react/solid';
 import { firestoreDB } from '../firebase';
 import { collection, getDocs } from 'firebase/firestore';
-
+import { useNavigate } from 'react-router-dom';
 interface Location {
   id: number;
   name: string;
 }
 
-const Search = () => {
-  const [selected, setSelected] = useState({
+const Search: FC = () => {
+  const [selected, setSelected] = useState<Location>({
     id: 0,
     name: 'Select Location',
   });
   const [query, setQuery] = useState('');
   const [locations, setLocations] = useState<Location[]>([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const locationsRef = collection(firestoreDB, 'locations');
@@ -25,18 +26,22 @@ const Search = () => {
     });
   }, []);
 
+  const search = () => {
+    navigate(`/hotels?city=${selected.name}`);
+  };
+
   const filteredLocations =
     query === ''
       ? locations
-      : locations.filter((location) =>
-          location.name
+      : locations.filter((person) =>
+          person.name
             .toLowerCase()
             .replace(/\s+/g, '')
             .includes(query.toLowerCase().replace(/\s+/g, ''))
         );
 
   return (
-    <div className='w-72'>
+    <div className='w-72 flex items-center'>
       <Combobox value={selected} onChange={setSelected}>
         <div className='relative mt-1'>
           <div className='relative w-full text-left bg-white rounded-lg shadow-md cursor-default focus:outline-none focus-visible:ring-2 focus-visible:ring-opacity-75 focus-visible:ring-white focus-visible:ring-offset-teal-300 focus-visible:ring-offset-2 sm:text-sm overflow-hidden'>
@@ -65,15 +70,15 @@ const Search = () => {
                   Nothing found.
                 </div>
               ) : (
-                filteredLocations.map((location) => (
+                filteredLocations.map((person) => (
                   <Combobox.Option
-                    key={location.id}
+                    key={person.id}
                     className={({ active }) =>
                       `cursor-default select-none relative py-2 pl-10 pr-4 ${
                         active ? 'text-white bg-teal-600' : 'text-gray-900'
                       }`
                     }
-                    value={location}
+                    value={person}
                   >
                     {({ selected, active }) => (
                       <>
@@ -82,7 +87,7 @@ const Search = () => {
                             selected ? 'font-medium' : 'font-normal'
                           }`}
                         >
-                          {location.name}
+                          {person.name}
                         </span>
                         {selected ? (
                           <span
@@ -105,6 +110,13 @@ const Search = () => {
           </Transition>
         </div>
       </Combobox>
+
+      <button
+        onClick={search}
+        className='text-xs border-2 ml-2 text-white bg-blue-500 border-blue-500 rounded-md px-4 py-1.5'
+      >
+        Search
+      </button>
     </div>
   );
 };
