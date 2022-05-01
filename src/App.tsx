@@ -6,6 +6,7 @@ import Header from './components/Header';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import HotelsPage from './pages/HotelsPage';
+import BookingsPage from './pages/BookingsPage';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Route path='/hotels' element={<HotelsPage />} />
         <Route path='/login' element={<LoginPage />} />
         <Route path='/register' element={<RegisterPage />} />
+        <Route path='/bookings' element={<BookingsPage />} />
       </Routes>
     </BrowserRouter>
   );

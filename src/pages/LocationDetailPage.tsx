@@ -1,6 +1,6 @@
-import { Fragment } from 'react';
-import { useEffect, useState } from 'react';
+import { Fragment, useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import toast from 'react-hot-toast';
 import { Dialog, Transition } from '@headlessui/react';
 import { firestoreDB } from '../firebase';
 import {
@@ -10,9 +10,8 @@ import {
   query,
   where,
 } from 'firebase/firestore';
-import { getAuth } from 'firebase/auth';
-import toast from 'react-hot-toast';
 import { Hotel } from '../types';
+import { getAuth } from 'firebase/auth';
 
 type LocationDetailPageParams = {
   hotelId: string;
@@ -64,7 +63,9 @@ const LocationDetailPage: React.FC = () => {
           hotel: {
             id: hotel?.id,
             name: hotel?.name,
+            image: hotel?.image,
           },
+          bookedOn: new Date(),
         });
 
         toast.success('Hotel booked successfully!');

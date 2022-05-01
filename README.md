@@ -26,15 +26,29 @@
 
 ---
 
-__Day 1__
-- Project Overview ✅ 
-- Tools Intro ✅ 
-- Project setup with required tools ✅ 
-- Remote repo setup ✅ 
-- Firebase setup ✅ 
-- Basic components ✅ 
+__Day 1__ ✅ 
+- Project Overview 
+- Tools Intro
+- Project setup with required tools
+- Remote repo setup
+- Firebase setup
+- Basic components
 
-__Day 2__
+__Day 2__ ✅ 
 - Building Static Components with tailwind
 - Connecting react to firestore
 - Fetching data from firestore
+
+__Day 3__ ✅ 
+- Display featured & popular locations
+- Render API data inside hotel-detail page
+  
+__Day 4__ ✅ 
+- Adding filters
+- Adding sign in, register & sign out
+  
+__Day 5__ ✅ 
+- Adding Booking System
+- View Past Bookings
+
+---
